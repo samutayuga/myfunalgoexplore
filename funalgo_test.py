@@ -1,6 +1,6 @@
 import unittest
 
-from funalgotest import MyAlgoForFun
+from funalgo import MyAlgoForFun
 
 alg = MyAlgoForFun()
 
