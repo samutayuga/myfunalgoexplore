@@ -23,5 +23,6 @@ water
 ![LL](LL.png)
 
 > Huge advantage, can insert the item at the beginning of the data structure fast `- O(1) running time`
+> Huge disadvantage, slow operation to insert items at the end `- O(N) running time`
 
 ![Linked List](linkedlist.png) 
