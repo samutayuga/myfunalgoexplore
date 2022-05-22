@@ -24,6 +24,10 @@ class TestFunAlgo(unittest.TestCase):
     def test_is_anagram(self):
         self.assertTrue(alg.is_anagram(['r', 'e', 's', 't', 'f', 'u', 'l'], ['f', 'l', 'u', 's', 't', 'e', 'r']))
 
+    def test_trapping_water(self):
+        self.assertEqual(8, alg.trapping_water_problem([1, 0, 2, 1, 3, 1, 2, 0, 3]))
+        self.assertEqual(3, alg.trapping_water_problem([2, 1, 3, 1, 4]))
+
 
 if __name__ == '__main__':
     unittest.main()
