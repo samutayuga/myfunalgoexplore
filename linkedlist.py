@@ -55,5 +55,32 @@ class LinkedList:
             print(actual_node)
             actual_node = actual_node.next_node
 
+    # O(N) linear running time
+    def remove(self, data):
+        # if the list is empty
+        if self.head is None:
+            return
+        actual_node = self.head
+        # we have to track the previous node for future pointer updates
+        # this is ahy doubly linked lists are better - we can get the previous
+        # node
+        previous_node = None
+
+        while actual_node is not None and actual_node.data != data:
+            previous_node = actual_node
+            actual_node = actual_node.next_node
+        # search miss
+        if actual_node is None:
+            return
+        # update the references (so we have the data we want to remove)
+        # if the head node is the one we want to remove
+        if previous_node is None:
+            self.head = actual_node.next_node
+        else:
+            # remove the internal node
+            # NO NEED to del the node because the garbage collection will do that
+            previous_node.next_node = actual_node.next_node
+        self.num_of_nodes -= 1
+
     def size_of_list(self):
         return self.num_of_nodes

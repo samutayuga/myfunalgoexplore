@@ -16,6 +16,8 @@ class LinkedListTest(unittest.TestCase):
         p1 = linkedlist.head
         self.assertTrue(p1.next_node.data == "head")
         linkedlist.traverse()
+        linkedlist.remove("jack")
+        self.assertEqual(2, linkedlist.num_of_nodes)
 
 
 if __name__ == '__main__':
