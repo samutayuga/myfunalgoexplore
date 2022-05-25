@@ -20,8 +20,6 @@ water
 
 ## Linked Lists
 
-![LL](LL.png)
-
 > Huge advantage, can insert the item at the beginning of the data structure fast `- O(1) running time`
 > Huge disadvantage, slow operation to insert items at the end `- O(N) running time`
 
@@ -48,3 +46,4 @@ algorithm thats able to find the middle node!
 > the last node it means the slow pointer reaches the middle node
 
 # Construct an in-place algorithm to reverse a linked list!
+![Reverse](reverse.png)
