@@ -55,6 +55,19 @@ class LinkedListTest(unittest.TestCase):
 
         self.assertEqual(30, linkedlist.get_middle_node().data)
 
+    def test_reverse(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_start(10)
+        linkedlist.insert_start(19)
+        linkedlist.insert_start(30)
+        linkedlist.insert_start(21)
+        linkedlist.insert_start(23)
+        print("before reverse")
+        linkedlist.traverse()
+        linkedlist.reverse()
+        print("after reverse")
+        linkedlist.traverse()
+
 
 if __name__ == '__main__':
     unittest.main()

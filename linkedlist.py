@@ -32,6 +32,25 @@ class LinkedList:
             new_node.next_node = self.head
             self.head = new_node
 
+    def reverse(self):
+        # In the beginning set to head
+        current = self.head
+        # In the beginning set to NULL
+        next = None
+        # In the beginning set to NULL
+        prev = None
+
+        # 1->2->3->4 to be 1<-2<-3<-4
+        while current:
+            # new_current_node = current_node
+
+            next = current.next_node
+            current.next_node = prev
+            prev = current
+            current = next
+
+        self.head = prev
+
     # O(N)
     def get_middle_node(self):
         fast_pointer = self.head
