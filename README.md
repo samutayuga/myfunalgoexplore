@@ -33,3 +33,18 @@ water
 # Interesting Topics
 
 Compare the performance of `linkedlist` and `array` in python
+
+`Result`
+```text
+time to insert 500000 item into array is 55.26879405975342
+time to insert 500000 item into linkedlist is 0.7220067977905273
+ratio 76.54885553555177
+```
+
+# Finding the middle node in a linked list
+Suppose we have a standard linked list. Construct an in-place (without extra memory) 
+algorithm thats able to find the middle node!
+> implement two pointers to traverse the nodes, one with pace 1, another one with pace 2. When the fast pointer reaches the
+> the last node it means the slow pointer reaches the middle node
+
+# Construct an in-place algorithm to reverse a linked list!

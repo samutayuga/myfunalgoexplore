@@ -32,6 +32,15 @@ class LinkedList:
             new_node.next_node = self.head
             self.head = new_node
 
+    # O(N)
+    def get_middle_node(self):
+        fast_pointer = self.head
+        slow_pointer = self.head
+        while fast_pointer.next_node and fast_pointer.next_node.next_node:
+            fast_pointer = fast_pointer.next_node.next_node
+            slow_pointer = slow_pointer.next_node
+        return slow_pointer
+
     # O(n)
     def insert_end(self, data):
         self.num_of_nodes += 1

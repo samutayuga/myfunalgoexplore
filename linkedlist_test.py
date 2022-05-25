@@ -36,14 +36,24 @@ class LinkedListTest(unittest.TestCase):
         for i in range(50000):
             array.insert(0, i)
         total_time_arrinsert = time.time() - now
-        print("time to insert 50000 item into array is %s", str(total_time_arrinsert))
+        print("time to insert 50000 item into array is {}".format(str(total_time_arrinsert)))
         now = time.time()
         for i in range(50000):
             linkedlist.insert_start(i)
         total_time_llinsert = time.time() - now
-        print("time to insert 50000 item into linkedlist is %s", str(total_time_llinsert))
+        print("time to insert 50000 item into linkedlist is {}".format(str(total_time_llinsert)))
         ratio = total_time_arrinsert / total_time_llinsert
-        print("ratio", str(ratio))
+        print("ratio {}".format(str(ratio)))
+
+    def test_get_middle_node(self):
+        linkedlist = LinkedList()
+        linkedlist.insert_start(10)
+        linkedlist.insert_start(19)
+        linkedlist.insert_start(30)
+        linkedlist.insert_start(21)
+        linkedlist.insert_start(23)
+
+        self.assertEqual(30, linkedlist.get_middle_node().data)
 
 
 if __name__ == '__main__':
