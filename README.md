@@ -25,4 +25,11 @@ water
 > Huge advantage, can insert the item at the beginning of the data structure fast `- O(1) running time`
 > Huge disadvantage, slow operation to insert items at the end `- O(N) running time`
 
-![Linked List](linkedlist.png) 
+![Linked List](linkedlist.png)
+
+> `array`, `linked list` and `doubly linked list` does not solve the problem to do arbitrary search with
+> faster than O(N) running time complexity
+
+# Interesting Topics
+
+Compare the performance of `linkedlist` and `array` in python
