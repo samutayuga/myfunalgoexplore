@@ -42,11 +42,15 @@ class LinkedList:
 
         # 1->2->3->4 to be 1<-2<-3<-4
         while current:
-            # new_current_node = current_node
-
+            # This is to point to the old next node of current node
             next = current.next_node
+            # the current node's next node point to the node that in the beginning it pointed by
+            # if current node is head, then this is NULL, call it prev
             current.next_node = prev
+
+            # prev is pointer updated with current, in the next iteration it will be pointed by node after
             prev = current
+            # current is pointer updated with next, in the next iteration it will be pointing to prev
             current = next
 
         self.head = prev
