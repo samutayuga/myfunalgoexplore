@@ -72,3 +72,7 @@ algorithm thats able to find the middle node!
 
         self.head = prev
 ```
+# How to implement the queue with 2 stacks
+# How to implement the queue with 1 stacks
+# Binart Search Tree
+
