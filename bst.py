@@ -10,6 +10,86 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
+    def remove(self, data):
+        if self.root:
+            self.remove_node(data, self.root)
+
+    def remove_node(self, data, node):
+        if node is None:
+            return
+        if data < node.data:
+            self.remove_node(data, node.left_node)
+        elif data > node.data:
+            self.remove_node(data, node.right_node)
+        else:
+            # we have found the node we want to remove
+            # there are 3 options
+            # LEAF NODE CASE
+            if node.left_node is None and node.right_node is None:
+                print("Removing a leaf node ...%d" % node.data)
+                parent = node.parent
+                if parent is not None and parent.left_node == node:
+                    parent.left_node = None
+                if parent is not None and parent.right_node == node:
+                    parent.right_node = None
+                if parent is None:
+                    self.root = None
+
+                del node
+            # WHEN THERE iS A SINGLE CHILD
+            elif node.left_node is None and node.right_node is not None:
+                print("Removing a node with single right child")
+                parent = node.parent
+                """
+                    4
+                 3      6 
+                1  2   5  
+                         7
+                """
+
+                if parent is not None and parent.left_node == node:
+                    parent.left_node = node.right_node
+                """
+                                    4
+                                 3      5 
+                                1  2      6
+                                            7
+               """
+                if parent is not None and parent.right_node == node:
+                    parent.right_node = node.right_node
+
+                if parent is None:
+                    self.root = node.right_node
+                node.right_node.parent = parent
+
+                del node
+            elif node.left_node is not None and node.right_node is None:
+                print("Removing a node with single left child")
+                parent = node.parent
+                """
+                    4
+                 3      6 
+                1  2   5  
+                         7
+                """
+
+                if parent is not None and parent.left_node == node:
+                    parent.left_node = node.left_node
+                """
+                                    4
+                                 3      5 
+                                1  2      6
+                                            7
+               """
+                if parent is not None and parent.right_node == node:
+                    parent.right_node = node.left_node
+
+                if parent is None:
+                    self.root = node.left_node
+                node.left_node.parent = parent
+
+                del node
+
     def insert(self, data):
         # this is the first item in the BST
         if self.root is None:
