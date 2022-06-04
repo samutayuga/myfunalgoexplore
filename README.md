@@ -74,5 +74,5 @@ algorithm thats able to find the middle node!
 ```
 # How to implement the queue with 2 stacks
 # How to implement the queue with 1 stacks
-# Binart Search Tree
+# Binary Search Tree
 
