@@ -79,12 +79,26 @@ algorithm thats able to find the middle node!
 Write an efficient algorithm thats able to compare two binary search trees. The method returns true if the trees are identical 
 (same topology with same values in the nodes) otherwise it returns false.
 # AVL Trees
+
+![left-heavy rotation](left_heavy_rotation.png)
 ## Term
 * Balance factor
 > hleft -hright
-* Left heavy case
+* heavy-left case
 > Balance factor > 0 ,Requires right rotation
-* Right heavy case 
+* heavy-right case 
 >Balance factor < 0, Requires left rotation
 
+## AVL Trees Rotations
+* Rotation case 1
 
+![Simple Right Rotation](case1_simple_right_rotation.png)
+
+
+* Rotation case 2
+
+![Simple Left Rotation](case2_simple_left_rotation.png)
+
+* Rotation case 3
+
+![Simple Left Rotation](heavy_left_right_case.png)
