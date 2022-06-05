@@ -5,11 +5,11 @@ from bst import BinarySearchTree
 class BstTest(unittest.TestCase):
     """
                    Supposed we need to delete 9
-                         4
+                         5
                        /   \
                      3       7
                    /  \     / \
-                   1   2   6   9
+                   1   4   6   9
                           /   /
                          5   8
                   Where 7 is 9's parent node, and 9 is 7's right node
@@ -19,14 +19,13 @@ class BstTest(unittest.TestCase):
 
     def test_traverse(self):
         bst = BinarySearchTree()
-        bst.insert(4)
+        bst.insert(5)
         bst.insert(3)
         bst.insert(7)
         bst.insert(1)
-        bst.insert(2)
+        bst.insert(4)
         bst.insert(6)
         bst.insert(9)
-        bst.insert(5)
         bst.insert(8)
         bst.traverse()
 
