@@ -165,3 +165,33 @@ class AVLTree:
                 node.data = temp
 
                 self.remove_node(data, predecessor)
+
+
+    def violation_helper(self, node):
+        balance = self.calculate_balance(node)
+        # OK, we know the tree is left heavy BUT it can be left-right-heavy or left-left-heavy
+        if balance > 1:
+            # left right heavy situation: left rotation on parent + right rotation on grandparent
+            if self.calculate_balance(node.left_node) < 0:
+                self.rotate_left(node.left_node)
+            # this is the right rotation on grandparent (if left-left heavy, that's single right rotation
+            self.rotate_right(node)
+
+        # OK, we know the tree is left heavy BUT it can be left-right-heavy or left-left-heavy
+        if balance < -1:
+            # right - left heavy situation: so we need a right rotation before left rotation
+            if self.calculate_balance(node.left_node) > 0:
+                self.rotate_right(node.right_node)
+            # left rotate
+            self.rotate_left(node)
+
+    def calc_height(self, node):
+        # this is when the node is a NULL
+        if node is None:
+            return -1
+        return node.height
+
+    def calculate_balance(self, node):
+        if node is None:
+            return 0
+        return self.calc_height(node.left_node) - self.calc_height(node.right_node)
