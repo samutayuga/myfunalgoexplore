@@ -102,3 +102,7 @@ Write an efficient algorithm thats able to compare two binary search trees. The 
 * Rotation case 3
 
 ![Simple Left Rotation](heavy_left_right_case.png)
+
+* Rotation case 4
+
+![Simple Left Rotation](case4_heavy_right_left_case.png)
