@@ -33,8 +33,9 @@ class BstTest(unittest.TestCase):
         self.assertEqual(9, bst.get_max())  # assert max
         self.assertEqual(1, bst.get_min())  # assert min
 
-        bst.remove(8)
+
         bst.remove(3)
+        bst.remove(8)
         bst.remove(6)
         bst.remove(9)
         bst.traverse()
