@@ -67,19 +67,34 @@ class BinarySearchTree:
                 print("Removing a node with single left child")
                 parent = node.parent
                 """
-                    4
-                 3      6 
-                1  2   5  
-                         7
+                supposed we delete 6
+                      4
+                    /   \
+                  3       7 
+                /  \     / \
+                1   2   6   9
+                       /   /
+                      5   8
+                Where 7 is 6's parent node, and 6 is 7's left node
+                After removing 6, the 6's left node will become
+                7's left node
                 """
 
                 if parent is not None and parent.left_node == node:
                     parent.left_node = node.left_node
+
                 """
-                                    4
-                                 3      5 
-                                1  2      6
-                                            7
+                Supposed we need to delete 9
+                      4
+                    /   \
+                  3       7 
+                /  \     / \
+                1   2   6   9
+                       /   /
+                      5   8
+               Where 7 is 9's parent node, and 9 is 7's right node
+                After removing 9, the 9's left node will become
+                7's right node
                """
                 if parent is not None and parent.right_node == node:
                     parent.right_node = node.left_node
@@ -89,6 +104,35 @@ class BinarySearchTree:
                 node.left_node.parent = parent
 
                 del node
+            # WHEN THERE iS A SINGLE CHILD
+            else:
+                print("Removing node with 2 children")
+                """
+                                Supposed we need to delete 3
+                                      4
+                                    /   \
+                                  3       7 
+                                /  \     / \
+                                1   2   6   9
+                                       /   /
+                                      5   8
+                               Where 7 is 9's parent node, and 9 is 7's right node
+                                After removing 9, the 9's left node will become
+                                7's right node
+                """
+                predecessor = self.get_predecessor(node.left_node)
+                # swap the node and predecessor
+                temp = predecessor.data
+                predecessor.data = node.data
+                node.data = temp
+
+                self.remove_node(data, predecessor)
+
+    # predecessor is the largest item in the left node
+    def get_predecessor(self, node):
+        if node.right_node is not None:
+            return self.get_predecessor(node.right_node)
+        return node
 
     def insert(self, data):
         # this is the first item in the BST
