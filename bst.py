@@ -1,3 +1,20 @@
+class TreeComparator:
+    def compare(self, node1, node2):
+        # check the base-case (so these node1 and node2 maybe the nodes or leaf node
+        # node1 maybe a None or node2 maybe a none values
+        if not node1 or not node2:
+            return node1 == node2
+
+        # we have to check the value in the nodes
+        if node1.data is not node2.data:
+            return False
+
+        # check all the left and the right subtrees (children) recursively
+
+        return self.compare(node1.left_node, node2.left_node) \
+               and self.compare(node1.right_node, node2.right_node)
+
+
 class Node:
     def __init__(self, data, parent=None):
         self.data = data

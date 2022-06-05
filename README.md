@@ -75,4 +75,16 @@ algorithm thats able to find the middle node!
 # How to implement the queue with 2 stacks
 # How to implement the queue with 1 stacks
 # Binary Search Tree
+# Compare binary trees overview
+Write an efficient algorithm thats able to compare two binary search trees. The method returns true if the trees are identical 
+(same topology with same values in the nodes) otherwise it returns false.
+# AVL Trees
+## Term
+* Balance factor
+> hleft -hright
+* Left heavy case
+> Balance factor > 0 ,Requires right rotation
+* Right heavy case 
+>Balance factor < 0, Requires left rotation
+
 

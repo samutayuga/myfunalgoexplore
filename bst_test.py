@@ -1,5 +1,5 @@
 import unittest
-from bst import BinarySearchTree
+from bst import BinarySearchTree, TreeComparator
 
 
 class BstTest(unittest.TestCase):
@@ -32,12 +32,27 @@ class BstTest(unittest.TestCase):
         self.assertEqual(9, bst.get_max())  # assert max
         self.assertEqual(1, bst.get_min())  # assert min
 
-
         bst.remove(3)
         bst.remove(8)
         bst.remove(6)
         bst.remove(9)
         bst.traverse()
+
+    def test_comparebst(self):
+        bst1 = BinarySearchTree()
+        bst1.insert(5)
+        bst1.insert(3)
+        bst1.insert(6)
+        bst1.insert(1)
+
+        bst2 = BinarySearchTree()
+        bst2.insert(5)
+        bst2.insert(3)
+        bst2.insert(6)
+        bst2.insert(1)
+        comparator = TreeComparator()
+
+        self.assertTrue(comparator.compare(bst1.root, bst2.root))
 
 
 if __name__ == '__main__':
