@@ -80,17 +80,22 @@ Write an efficient algorithm thats able to compare two binary search trees. The 
 (same topology with same values in the nodes) otherwise it returns false.
 # AVL Trees
 
-![left-heavy rotation](left_heavy_rotation.png)
+
 ## Term
 * Balance factor
 > hleft -hright
 * heavy-left case
 > Balance factor > 0 ,Requires right rotation
+Sample,
 
 ![Right Rotate](right_rotate.png)
 
+![left-heavy rotation](left_heavy_rotation.png)
+
 * heavy-right case 
 >Balance factor < 0, Requires left rotation
+
+![left-heavy rotation](left_rotation_heavy_right.png)
 
 ## AVL Trees Rotations
 * Rotation case 1
