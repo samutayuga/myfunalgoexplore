@@ -86,6 +86,9 @@ Write an efficient algorithm thats able to compare two binary search trees. The 
 > hleft -hright
 * heavy-left case
 > Balance factor > 0 ,Requires right rotation
+
+![Right Rotate](right_rotate.png)
+
 * heavy-right case 
 >Balance factor < 0, Requires left rotation
 

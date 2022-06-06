@@ -69,7 +69,7 @@ class AVLTree:
 
                 del node
                 # after every insertion WE HAVE TO CHECK whether the AVL properties are violated
-                self.handle_violation(node)
+                self.handle_violation(parent)
             # WHEN THERE iS A SINGLE CHILD
             elif node.left_node is None and node.right_node is not None:
                 print("Removing a node with single right child")
@@ -98,7 +98,7 @@ class AVLTree:
 
                 del node
                 # after every insertion WE HAVE TO CHECK whether the AVL properties are violated
-                self.handle_violation(node)
+                self.handle_violation(parent)
             elif node.left_node is not None and node.right_node is None:
                 print("Removing a node with single left child")
                 parent = node.parent
@@ -141,7 +141,7 @@ class AVLTree:
 
                 del node
                 # after every insertion WE HAVE TO CHECK whether the AVL properties are violated
-                self.handle_violation(node)
+                self.handle_violation(parent)
             # WHEN THERE iS A SINGLE CHILD
             else:
                 print("Removing node with 2 children")
@@ -166,7 +166,17 @@ class AVLTree:
 
                 self.remove_node(data, predecessor)
 
+    def handle_violation(self, parent_node):
+        # check the nodes from the node we have inserted up to root node
+        while parent_node is not None:
+            parent_node.height = max(self.calc_height(parent_node.left_node),
+                                     self.calc_height(parent_node.right_node)) + 1
+            self.violation_helper(parent_node)
+            # whenever we settle a violation (rotations) it may happen that it
+            # violates the AVL properties in the other part of the tree
+            parent_node = parent_node.parent
 
+    # check whether the subtree is balanced with root node = node
     def violation_helper(self, node):
         balance = self.calculate_balance(node)
         # OK, we know the tree is left heavy BUT it can be left-right-heavy or left-left-heavy
@@ -184,6 +194,71 @@ class AVLTree:
                 self.rotate_right(node.right_node)
             # left rotate
             self.rotate_left(node)
+
+    # for a given node, normally the node that is added for insert use case
+    # or the parent of the node in case removal use case
+    def rotate_right(self, node):
+        print("Rotating to the right on node ", node.data)
+        # backup the right node
+        temp_right_node = node.right_node
+        # left node will become the parent of right node
+        t = temp_right_node.left_node
+
+        # the current node becomes the right node of the left node
+        temp_left_node.right_node = node
+        # the old right node becomes the left node
+        node.left_node = t
+        if t is not None:
+            t.parent = node
+        temp_parent = node.parent
+        node.parent = temp_left_node
+        temp_left_node.parent = temp_parent
+
+        if temp_left_node.parent is not None and temp_left_node.parent.left_mode == node:
+            temp_left_node.parent.left_mode = temp_left_node
+
+        if temp_left_node.parent is not None and temp_left_node.parent.right_node == node:
+            temp_left_node.parent.right_mode = temp_left_node
+
+        if node == self.root:
+            self.root = temp_left_node
+
+        node.height = max(self.calc_height(node.left_node), self.calc_height(node.right_node))
+        temp_left_node.height = max(self.calc_height(temp_left_node.left_node),
+                                    self.calc_height(temp_left_node.right_node)) + 1
+
+        # for a given node, normally the node that is added for insert use case
+        # or the parent of the node in case removal use case
+
+    def rotate_left(self, node):
+        print("Rotating to the left on node ", node.data)
+        # backup the left node
+        temp_left_node = node.left_node
+        # left node will become the parent of right node
+        t = temp_left_node.right_node
+
+        # the current node becomes the right node of the left node
+        temp_left_node.right_node = node
+        # the old right node becomes the left node
+        node.left_node = t
+        if t is not None:
+            t.parent = node
+        temp_parent = node.parent
+        node.parent = temp_left_node
+        temp_left_node.parent = temp_parent
+
+        if temp_left_node.parent is not None and temp_left_node.parent.left_mode == node:
+            temp_left_node.parent.left_mode = temp_left_node
+
+        if temp_left_node.parent is not None and temp_left_node.parent.right_node == node:
+            temp_left_node.parent.right_mode = temp_left_node
+
+        if node == self.root:
+            self.root = temp_left_node
+
+        node.height = max(self.calc_height(node.left_node), self.calc_height(node.right_node))
+        temp_left_node.height = max(self.calc_height(temp_left_node.left_node),
+                                    self.calc_height(temp_left_node.right_node)) + 1
 
     def calc_height(self, node):
         # this is when the node is a NULL
