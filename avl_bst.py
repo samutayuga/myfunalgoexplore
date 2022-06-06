@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, data, parent):
+    def __init__(self, data, parent=None):
         self.data = data
         self.left_node = None
         self.right_node = None
@@ -199,26 +199,29 @@ class AVLTree:
     # or the parent of the node in case removal use case
     def rotate_right(self, node):
         print("Rotating to the right on node ", node.data)
-        # backup the right node
-        temp_right_node = node.right_node
+        # backup the left node
+        temp_left_node = node.left_node
         # left node will become the parent of right node
-        t = temp_right_node.left_node
+        t = temp_left_node.right_node
 
-        # the current node becomes the right node of the left node
+        # the current node becomes the right node of the right node that now is its parent
         temp_left_node.right_node = node
-        # the old right node becomes the left node
+        # the old right node's left node becomes the right node
         node.left_node = t
         if t is not None:
+            # change the parent for previous right node to current node
             t.parent = node
+        # escalate
         temp_parent = node.parent
+        # current node parent change accordingly
         node.parent = temp_left_node
         temp_left_node.parent = temp_parent
 
-        if temp_left_node.parent is not None and temp_left_node.parent.left_mode == node:
-            temp_left_node.parent.left_mode = temp_left_node
+        if temp_left_node.parent is not None and temp_left_node.parent.left_node == node:
+            temp_left_node.parent.left_node = temp_left_node
 
         if temp_left_node.parent is not None and temp_left_node.parent.right_node == node:
-            temp_left_node.parent.right_mode = temp_left_node
+            temp_left_node.parent.right_node = temp_left_node
 
         if node == self.root:
             self.root = temp_left_node
@@ -233,32 +236,32 @@ class AVLTree:
     def rotate_left(self, node):
         print("Rotating to the left on node ", node.data)
         # backup the left node
-        temp_left_node = node.left_node
+        temp_right_node = node.right_node
         # left node will become the parent of right node
-        t = temp_left_node.right_node
+        t = temp_right_node.left_node
 
         # the current node becomes the right node of the left node
-        temp_left_node.right_node = node
+        temp_right_node.left_node = node
         # the old right node becomes the left node
-        node.left_node = t
+        node.right_node = t
         if t is not None:
             t.parent = node
         temp_parent = node.parent
-        node.parent = temp_left_node
-        temp_left_node.parent = temp_parent
+        node.parent = temp_right_node
+        temp_right_node.parent = temp_parent
 
-        if temp_left_node.parent is not None and temp_left_node.parent.left_mode == node:
-            temp_left_node.parent.left_mode = temp_left_node
+        if temp_right_node.parent is not None and temp_right_node.parent.left_node == node:
+            temp_right_node.parent.left_node = temp_right_node
 
-        if temp_left_node.parent is not None and temp_left_node.parent.right_node == node:
-            temp_left_node.parent.right_mode = temp_left_node
+        if temp_right_node.parent is not None and temp_right_node.parent.right_node == node:
+            temp_right_node.parent.right_node = temp_right_node
 
         if node == self.root:
-            self.root = temp_left_node
+            self.root = temp_right_node
 
         node.height = max(self.calc_height(node.left_node), self.calc_height(node.right_node))
-        temp_left_node.height = max(self.calc_height(temp_left_node.left_node),
-                                    self.calc_height(temp_left_node.right_node)) + 1
+        temp_right_node.height = max(self.calc_height(temp_right_node.left_node),
+                                     self.calc_height(temp_right_node.right_node)) + 1
 
     def calc_height(self, node):
         # this is when the node is a NULL
@@ -270,3 +273,28 @@ class AVLTree:
         if node is None:
             return 0
         return self.calc_height(node.left_node) - self.calc_height(node.right_node)
+
+    def traverse_in_order(self, node):
+        if node.left_node:
+            self.traverse_in_order(node.left_node)
+
+        l, r, p = '', '', ''
+
+        if node.left_node is not None:
+            l = node.left_node.data
+        else:
+            l = 'NULL'
+        if node.right_node is not None:
+            r = node.right_node.data
+        else:
+            r = 'NULL'
+
+        if node.parent is not None:
+            p = node.parent.data
+        else:
+            p = 'NULL'
+
+        print("%s left: %s right: %s parent: %s height: %s" % (node.data, l, r, p, node.height))
+
+        if node.right_node:
+            self.traverse_in_order(node.right_node)
