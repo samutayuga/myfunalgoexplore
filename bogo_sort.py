@@ -17,7 +17,9 @@ class BogoSort:
 
     def is_sorted(self):
         """
-
+        The operation has order O(N) running time complexity
+        It will stop and return False if it is found the left element is greater
+        than its adjacent right element
         :return:
         """
         for i in range(len(self.nums) - 1):
