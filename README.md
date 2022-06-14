@@ -166,3 +166,8 @@ def is_sorted(self):
 
 ## Shell Sort
 >Not popular
+
+## Quick Sort
+>Divide and Conquer
+> Worst case O(N2)
+> Average O(NlogN)
