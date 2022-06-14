@@ -41,3 +41,17 @@ def insertion_sort(nums, ascending=True):
                 nums[j - 1], nums[j] = nums[j], nums[j - 1]
                 j -= 1
     return nums
+
+
+def shell_sort(nums, ascending=True):
+    gap = len(nums) // 2
+    while gap > 0:
+        for i in range(len(nums)):
+            j = i
+            if ascending:
+                while j > 0 and nums[j - gap] > nums[j]:
+                    # swap
+                    nums[j - gap], nums[j] = nums[j], nums[j - gap]
+                    j = j - gap
+
+        gap = gap // 2
