@@ -154,5 +154,14 @@ def is_sorted(self):
 ## Bogo Sort
 
 ## Selection Sort
+* O(N) -> write
 
 ## Merge Sort
+
+## Insert Sort
+>Compare all items with the preceeding items
+* More write
+* O(N2) -> write
+
+
+## Shell Sort
