@@ -1,9 +1,14 @@
 class BubbleSort:
+
     def __init__(self, nums):
         self.nums = nums
 
     def sort(self, ascending=True):
         """
+       The biggest number swap to the last of the array
+       The next iteration will handle the remaining
+       and will not touch the last number
+       This will continue so on and so forth
         [-10,1,1000,-9]
         :return:
         """
