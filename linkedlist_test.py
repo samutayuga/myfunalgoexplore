@@ -1,6 +1,6 @@
 import time
 import unittest
-from linkedlist import LinkedList, Node
+from linkedlist import LinkedList, Node, do_merge
 
 
 class LinkedListTest(unittest.TestCase):
@@ -67,6 +67,21 @@ class LinkedListTest(unittest.TestCase):
         linkedlist.reverse()
         print("after reverse")
         linkedlist.traverse()
+
+    def test_merge_lnodes(self):
+        ll1=LinkedList()
+        ll1.insert_start(Node(1))
+        ll1.insert_start(Node(3))
+        ll1.insert_start(Node(7))
+        ll1.insert_start(Node(9))
+
+        ll2 = LinkedList()
+        ll2.insert_start(Node(1))
+        ll2.insert_start(Node(2))
+        ll2.insert_start(Node(6))
+        ll2.insert_start(Node(10))
+
+        print(do_merge(ll1, ll2))
 
 
 if __name__ == '__main__':

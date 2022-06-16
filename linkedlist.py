@@ -116,3 +116,20 @@ class LinkedList:
 
     def size_of_list(self):
         return self.num_of_nodes
+
+
+def do_merge(lnode1=None, lnode2=None):
+    return merge_lnodes(lnode1, lnode2)
+
+
+def merge_lnodes(lnode1=None, lnode2=None):
+    if lnode1 is None:
+        return lnode2
+    if lnode2 is None:
+        return lnode1
+    if lnode1.head.data < lnode2.head.data:
+        lnode1.next_node = merge_lnodes(lnode1.next_node,lnode2)
+        return lnode1
+    else:
+        lnode2.next_node = merge_lnodes(lnode2.next_node,lnode1)
+        return lnode2
