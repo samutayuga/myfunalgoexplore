@@ -171,3 +171,78 @@ def is_sorted(self):
 >Divide and Conquer
 > Worst case O(N2)
 > Average O(NlogN)
+
+# Graph Theory
+By definition, `Graph` is a mathematical structures used to `model pairwise relations between objects`
+
+![Directed Graph](directed_graph.png)
+
+Given, **G(V,E)** graphs are made up of `V` nodes (vertices) that are connected by `E` edges (links)
+
+**Undirected Graphs**
+>Bidirectional where edge (v,u) is identical to the edge (u,v)
+
+**Directed Graphs**
+> a directed graph **G(V,E) is a set of vertices and edges have direction. 
+It means that edge **(u,v)** is not identical to the edge **(v,u)**
+
+## Graph Types
+
+**trees**
+
+is an undirected graph where any two vertices (nodes) are connected by exactly one path
+
+![Graph Tree](graph_tree.png)
+
+**forests**
+
+forest is an undirected graph, all of whose connected components are trees (disjoint union of trees)
+
+![Graph Forest](graph_forests.png)
+
+**directed acyclic graph (dag)**
+it is a finite directed graph with no directed cycles (crucial in many algorithms)
+
+![directed acyclic graph](dag.png)
+
+**complete graph (dag)**
+every single pair of vertices (nodes) are connected
+
+![directed acyclic graph](dag.png)
+
+## Breadth-first Search
+
+Assume a graph as below,
+
+![](directed_graph.png)
+* we have a graph and we want to visit every node: we can do it wuth **BFS**
+* the aim us to visit every vertex exactly once
+* so the algorithm visits the neighbors then the neighbors of these neighbors of 
+these new vertices until all nodes are visited
+* running time complexity: **O(V+E)**
+* memory complexity is not good: we have to store lots of references
+* that is why **depth-first search (DFS)** is usually preferred
+* the advantage is that it constructs a shortest path: **Dijkstra's algorithm** does a breadth-first search
+if all the edge weights are equal to **1**
+
+`Further on rabbit hole`
+
+The underlying data type is **queue**
+>We have an empty queue at the beginning and we keep checking whether we have visited the given node or not
+
+>Algorithm keeps checking until queue is not empty
+
+Given a graph as below
+
+![BFS](bfs_sample.png)
+
+* step 1: Decide the starting vertex. Eg. node A
+* step 2: Insert A into queue
+* step 3: Dequeue will return A
+* step 4: Set A with `visited=true`
+* step 5: next is insert all neighbors to queue, B, F and G
+* step 6: dequeue returns `B`
+* step 7: set B as visited=true
+* step 8: insert all its neighbors that have not visited yet into the queue. So C and D are enqueued
+* step 9: repeat from step 6, where now, dequeue returns F
+
