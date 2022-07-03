@@ -20,3 +20,10 @@ def breadth_first_search(starting_vertex=None):
         for n in actual_node.adjacency_list:
             queue.append(n)
 
+
+def depth_first_search(starting_vertex=None):
+    stack = [starting_vertex]
+
+    while stack:
+        vtx = stack.pop(0)
+        vtx.visited = True

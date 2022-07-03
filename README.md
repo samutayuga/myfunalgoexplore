@@ -215,7 +215,7 @@ every single pair of vertices (nodes) are connected
 Assume a graph as below,
 
 ![](directed_graph.png)
-* we have a graph and we want to visit every node: we can do it wuth **BFS**
+* we have a graph and we want to visit every node: we can do it with **BFS**
 * the aim us to visit every vertex exactly once
 * so the algorithm visits the neighbors then the neighbors of these neighbors of 
 these new vertices until all nodes are visited
@@ -245,4 +245,34 @@ Given a graph as below
 * step 7: set B as visited=true
 * step 8: insert all its neighbors that have not visited yet into the queue. So C and D are enqueued
 * step 9: repeat from step 6, where now, dequeue returns F
+
+## Depth-First Search (DFS)
+* `depth-first search` is widely used graph traversal algorithm besides breadth-first search.
+* it was investigated as strategy for solving mazes by Tremaux in the 19th century
+* the algorithm explores as far as possible along each branch before backtracking 
+(on the other hand BFS is layer by layer algorithm)
+* time complexity of traversing a graph with depth-first search: **O(V+E)**
+* memory complexity: a bit better than that of BFS!!
+
+`Implementation`
+
+### recursion
+>more compact
+### iteration
+>similar to BFS but it is using stack instead of queue
+* step 1: Decide the starting vertex. Eg. node A
+* step 2: Push A into stack
+* step 3: Pop will return A
+* step 4: Set A with `visited=true`
+* step 5: next is insert all neighbors to queue, B, F and G
+* step 6: Pop returns `G`
+* step 7: set G as visited=true
+* step 8: insert all its neighbors that 
+have not visited yet into the stack. So H is pushed
+* step 9: repeat from step 6, where now, dequeue returns H
+
+## Real Problem Graph Theory
+
+![How To cover all destination](graph_theory.png)
+ 
 
