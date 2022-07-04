@@ -18,12 +18,26 @@ def breadth_first_search(starting_vertex=None):
 
         # let's consider the neighbors of the actual node one by one
         for n in actual_node.adjacency_list:
-            queue.append(n)
+            if not n.visited:
+                queue.append(n)
 
 
 def depth_first_search(starting_vertex=None):
     stack = [starting_vertex]
 
     while stack:
-        vtx = stack.pop(0)
+        vtx = stack.pop()
         vtx.visited = True
+        print(vtx.name)
+        for n in vtx.adjacency_list:
+            if not n.visited:
+                stack.append(n)
+
+
+def dfs_recurse(starting_vertex=None):
+    starting_vertex.visited = True
+    print(starting_vertex.name)
+
+    for n in starting_vertex.adjacency_list:
+        if not n.visited:
+            dfs_recurse(n)

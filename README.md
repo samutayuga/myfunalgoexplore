@@ -274,5 +274,37 @@ have not visited yet into the stack. So H is pushed
 ## Real Problem Graph Theory
 
 ![How To cover all destination](graph_theory.png)
- 
 
+## using BFS to find a way out of a Maze
+
+Your task is to design an algorithms with **breadth-first search** 
+that is able to find the shortest path from a given source to a given destination. 
+The maze is represented by a two-dimensional list.
+```text
+[
+   [S, 1, 1, 1, 1],
+   [0, 1, 1, 1, 1],
+   [0, 0, 0, 0, 1],
+   [1, 0, 1, 1, 1],
+   [0, 0, 0, 1, D]
+]
+```
+The **(0,0)** is the source and **(4,4)** is the destination. 
+0 represents walls or obstacles and 1 is the valid cells we can include in the solution.
+
+## Overview
+
+![Grid Representation](grid_representation.png)
+
+## Implementation
+
+* Initialize the maze with the visited status
+
+```text
+[
+ [False, False, False, False],
+ [False, False, False, False],
+ [False, False, False, False],
+ [False, False, False, False]
+]
+```
