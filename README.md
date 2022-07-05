@@ -292,9 +292,14 @@ The maze is represented by a two-dimensional list.
 The **(0,0)** is the source and **(4,4)** is the destination. 
 0 represents walls or obstacles and 1 is the valid cells we can include in the solution.
 
-## Overview
+`Overview`
 
 ![Grid Representation](grid_representation.png)
+
+
+`Different Route`
+
+![Different Routes](different_routes.png)
 
 ## Implementation
 
@@ -308,3 +313,12 @@ The **(0,0)** is the source and **(4,4)** is the destination.
  [False, False, False, False]
 ]
 ```
+
+From the starting point, **(x, y)**, the possible move is,
+* UP, increase by **(0, -1)**
+* DOWN, increase by **(0, 1)**
+* RIGHT, increase by **(1, 0)**
+* LEFT, increase by **(-1, 0)**
+
+`How the BFS works for the maze problem`
+
