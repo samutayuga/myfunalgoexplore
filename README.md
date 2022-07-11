@@ -361,3 +361,6 @@ From the starting point, **(x, y)**, the possible move is,
                     queue.append((next_x, next_y, dist + 1))
 ```
 
+# Djikstra shortest part 
+
+![djikstra](djikstra.png)
